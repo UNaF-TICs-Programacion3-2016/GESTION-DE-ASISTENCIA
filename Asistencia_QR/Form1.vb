@@ -7,6 +7,7 @@ Public Class Form1
     Private oclase As New Clase
 
 
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         camara.cargar_comb()
     End Sub
@@ -27,16 +28,20 @@ Public Class Form1
 
     Private Sub Btn_detener_Click(sender As Object, e As EventArgs) Handles Btn_detener.Click
         camara.desconectar()
-
-        oconeccion.Insertar_Asistencia()
-
+        oconeccion.Insertar_clase(#4/10/2018#, 2)
+        oconeccion.Insertar_Asistencia(#12/11/2000#, 1, 1)
     End Sub
 
     Private Sub Cbo_Camaras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cbo_Camaras.SelectedIndexChanged
         'DESCONECTA LAS CAMARA
         camara.desconectar()
     End Sub
-
+    Private Sub HORA_TIMER_Tick(sender As System.Object, e As System.EventArgs) Handles HORA_TIMER.Tick
+        oclase.hora_de_inicio_()
+        lbl_hora.Text = oclase.consultar_Hora
+        lbl_minuto.Text = oclase.consultar_minuto
+        Lbl_segundo.Text = oclase.consultar_segundo
+    End Sub
     Public Sub codigo_obtenido(codigo1 As String)
         'METODO CARGA LOS ATRIBUTOS PERSONAS  DE LA BD
         opersona.caragar_datos(codigo1)

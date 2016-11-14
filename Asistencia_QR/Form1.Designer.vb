@@ -32,6 +32,10 @@ Partial Class Form1
         Me.Btn_Iniciar = New System.Windows.Forms.Button()
         Me.Cbo_Camaras = New System.Windows.Forms.ComboBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.HORA_TIMER = New System.Windows.Forms.Timer(Me.components)
+        Me.lbl_hora = New System.Windows.Forms.Label()
+        Me.lbl_minuto = New System.Windows.Forms.Label()
+        Me.Lbl_segundo = New System.Windows.Forms.Label()
         CType(Me.QR_Picture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ASISTENCIA.SuspendLayout()
         Me.SuspendLayout()
@@ -129,11 +133,45 @@ Partial Class Form1
         'Timer1
         '
         '
+        'HORA_TIMER
+        '
+        Me.HORA_TIMER.Interval = 1000
+        '
+        'lbl_hora
+        '
+        Me.lbl_hora.AutoSize = True
+        Me.lbl_hora.Location = New System.Drawing.Point(713, 143)
+        Me.lbl_hora.Name = "lbl_hora"
+        Me.lbl_hora.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_hora.TabIndex = 2
+        Me.lbl_hora.Text = "Label1"
+        '
+        'lbl_minuto
+        '
+        Me.lbl_minuto.AutoSize = True
+        Me.lbl_minuto.Location = New System.Drawing.Point(758, 143)
+        Me.lbl_minuto.Name = "lbl_minuto"
+        Me.lbl_minuto.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_minuto.TabIndex = 3
+        Me.lbl_minuto.Text = "Label3"
+        '
+        'Lbl_segundo
+        '
+        Me.Lbl_segundo.AutoSize = True
+        Me.Lbl_segundo.Location = New System.Drawing.Point(803, 143)
+        Me.Lbl_segundo.Name = "Lbl_segundo"
+        Me.Lbl_segundo.Size = New System.Drawing.Size(39, 13)
+        Me.Lbl_segundo.TabIndex = 4
+        Me.Lbl_segundo.Text = "Label4"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(761, 462)
+        Me.ClientSize = New System.Drawing.Size(902, 484)
+        Me.Controls.Add(Me.Lbl_segundo)
+        Me.Controls.Add(Me.lbl_minuto)
+        Me.Controls.Add(Me.lbl_hora)
         Me.Controls.Add(Me.ASISTENCIA)
         Me.Name = "Form1"
         Me.Text = "Form1"
@@ -141,6 +179,7 @@ Partial Class Form1
         Me.ASISTENCIA.ResumeLayout(False)
         Me.ASISTENCIA.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -153,4 +192,8 @@ Partial Class Form1
     Friend WithEvents Cbo_Camaras As ComboBox
     Friend WithEvents Timer1 As Timer
     Friend WithEvents list_codigos As ListBox
+    Friend WithEvents HORA_TIMER As Timer
+    Friend WithEvents lbl_hora As Label
+    Friend WithEvents lbl_minuto As Label
+    Friend WithEvents Lbl_segundo As Label
 End Class
