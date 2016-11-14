@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Asistencia_QR.Clase">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Clase1.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Asistencia_QR.coneccion">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAgAAAIAABAABARAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CONECCION.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Asistencia_QR.lector_qr">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAgAABAAAAAEAAAAAAAAEAAAAAQQAAgAAAAAAAI=</HashCode>
+      <FileName>lector_qr.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Asistencia_QR.Persona">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAgQAAIAAAAACAAAEAIAAEAAIAAAAAAgA=</HashCode>
+      <FileName>Persona.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

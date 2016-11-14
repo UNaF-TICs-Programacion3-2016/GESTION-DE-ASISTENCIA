@@ -1,0 +1,18 @@
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\Asistencia_QR.exe.config
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\Asistencia_QR.exe
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\Asistencia_QR.pdb
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\Asistencia_QR.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\Oracle.DataAccess.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\AForge.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\AForge.Video.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\zxing.pdb
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\zxing.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\AForge.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\GESTION DE AULA-ASISTENCIA.vbprojResolveAssemblyReference.cache
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.Form1.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.Resources.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\GESTION DE AULA-ASISTENCIA.vbproj.GenerateResource.Cache
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.exe
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.pdb

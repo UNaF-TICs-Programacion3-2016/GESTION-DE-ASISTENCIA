@@ -1,72 +1,59 @@
-﻿Imports AForge.Video.DirectShow
-Imports ZXing
+﻿
 Imports AForge.Video
 Public Class Form1
-    Private oEntornoDB As New EntornoDB
-    Dim FUENTES As FilterInfoCollection 'CAMARAS DISPONIBLES
-    Dim WithEvents CAMARA As VideoCaptureDevice 'CAMARA 
-    Dim IMAGEN As Bitmap 'IMAGENES CAMARA
+    Private oconeccion As New coneccion
+    Private camara As New lector_qr
+    Private opersona As New Persona
+    Private oclase As New Clase
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'CARGA LAS CAMARAS DISPONIBLES EN LOS 2 COMBOBOX
-        FUENTES = New FilterInfoCollection(FilterCategory.VideoInputDevice)
-        If FUENTES.Count > 0 Then
-            For i As Integer = 0 To FUENTES.Count - 1
-                Cbo_Camaras.Items.Add(FUENTES(i).Name.ToString())
-            Next
-            Cbo_Camaras.SelectedIndex = 0
-        Else
-            MsgBox("NO HAY CAMARAS DISPONIBLES")
-        End If
+        camara.cargar_comb()
     End Sub
 
     Private Sub Btn_Iniciar_Click(sender As Object, e As EventArgs) Handles Btn_Iniciar.Click
-        'INICIA LA CAMARA 
-        CAMARA = New VideoCaptureDevice(FUENTES(Cbo_Camaras.SelectedIndex).MonikerString)
-        AddHandler CAMARA.NewFrame, New NewFrameEventHandler(AddressOf video_NuevoFrame1)
-        CAMARA.Start()
-        'INICIA ESCANEO
-        Btn_Iniciar.BackColor = Color.LawnGreen
-        Timer1.Interval = 1000
-        Timer1.Start()
+        camara.iniciar_camara()
     End Sub
-    Private Sub video_NuevoFrame1(sender As Object, eventArgs As NewFrameEventArgs)
+    Public Sub video_NuevoFrame1(sender As Object, eventArgs As NewFrameEventArgs)
         'PRESENTA LAS IMAGENES EN EL PICTUREBOX1
-        IMAGEN = DirectCast(eventArgs.Frame.Clone(), Bitmap)
-        QR_Picture.Image = IMAGEN
+        camara.IMAGEN_ = DirectCast(eventArgs.Frame.Clone(), Bitmap)
+        QR_Picture.Image = camara.IMAGEN_
     End Sub
     Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
-        'DECODIFICA SI PUEDE Y PONE EL RESULTADO EN LA ETIQUETA
-        Try
-            Dim DECODER As BarcodeReader = New BarcodeReader
-            Dim resultado As String = DECODER.Decode(IMAGEN).ToString
-            If lbl_Codigo.Text <> resultado Then list_codigos.Items.Add(resultado)
-            lbl_Codigo.Text = resultado
-        Catch ex As Exception
-        End Try
+        'DECODIFICA SI PUEDE Y ENVIA CODIGO
+        camara.DECODIFICAR_IMG()
 
     End Sub
 
     Private Sub Btn_detener_Click(sender As Object, e As EventArgs) Handles Btn_detener.Click
-        'DESCONECTA LAS CAMARA
-        Try
-            CAMARA.SignalToStop()
-        Catch ex As Exception
-        End Try
-        Btn_Iniciar.BackColor = Color.LightGray
+        camara.desconectar()
+
+        oconeccion.Insertar_Asistencia()
+
     End Sub
 
     Private Sub Cbo_Camaras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cbo_Camaras.SelectedIndexChanged
         'DESCONECTA LAS CAMARA
-        Try
-            CAMARA.SignalToStop()
-        Catch ex As Exception
-        End Try
-        Btn_Iniciar.BackColor = Color.LightGray
+        camara.desconectar()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        grid_persona.DataSource = oEntornoDB.ObtenerDatosDesdeSQL("SELECT nombre_persona from persona WHERE CODIGO_persona = 1234")
+    Public Sub codigo_obtenido(codigo1 As String)
+        'METODO CARGA LOS ATRIBUTOS PERSONAS  DE LA BD
+        opersona.caragar_datos(codigo1)
+        'VALIDACION PERSONA
+        If opersona.TipoDePersona = 3 Then 'NO ESTA EN LA BD =3
+            lbl_nombre.Text = "NO SE ENCUENTRA EN LA BASE DE DATOS"
+
+
+        ElseIf opersona.TipoDePersona = 1 Then 'alumno=1
+            lbl_nombre.Text = "BIENVENIDO ALUMNO: " + opersona.ApellidoyNombre
+
+            'llamar metodo que de de alta a la persona en la tabla asistencia 
+
+        ElseIf opersona.TipoDePersona = 2 Then 'Profesor =2
+            lbl_nombre.Text = "Bienvenido Profesor: " + opersona.ApellidoyNombre
+            'insertar una nueva clase en la tabla clase
+        End If
+
     End Sub
 End Class

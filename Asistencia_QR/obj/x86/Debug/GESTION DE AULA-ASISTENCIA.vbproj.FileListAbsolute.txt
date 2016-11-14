@@ -1,0 +1,4 @@
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x86\Debug\Asistencia_QR.exe.config
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x86\Debug\Asistencia_QR.Form1.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x86\Debug\Asistencia_QR.Resources.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x86\Debug\GESTION DE AULA-ASISTENCIA.vbproj.GenerateResource.Cache
