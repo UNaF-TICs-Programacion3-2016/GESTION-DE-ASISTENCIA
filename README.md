@@ -1,6 +1,6 @@
 <h3>GESTION DE ASISTENCIA AUTOMATICO</h3>
 
-El objetivo de este proyecto es desarrollar un sistema automático que registre la asistencia de los alumnos.
+El objetivo de este proyecto es desarrollar un sistema automático que registre la asistencia de los Profesores/Alumnos.
 
 <strong>Profesores</strong>
 <ul>
