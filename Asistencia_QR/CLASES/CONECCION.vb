@@ -4,8 +4,8 @@ Public Class coneccion
 
     Private Conexion As New OracleConnection()
     Private Comando As New OracleCommand()
-    Private Adaptador As OracleDataAdapter
- 
+
+
 
 
 

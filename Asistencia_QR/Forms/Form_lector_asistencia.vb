@@ -1,13 +1,11 @@
 ﻿
 Imports AForge.Video
-Public Class Form1
+Public Class Form_lector_asistencia
     Private oconeccion As New coneccion
     Private camara As New lector_qr
     Private opersona As New Persona
     Private oclase As New Clase
-
-
-
+    Private punto As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         camara.cargar_comb()
     End Sub
@@ -25,11 +23,16 @@ Public Class Form1
         camara.DECODIFICAR_IMG()
 
     End Sub
-
+    Public Sub clase_finalizada()
+        HORA_TIMER.Stop()
+    End Sub
     Private Sub Btn_detener_Click(sender As Object, e As EventArgs) Handles Btn_detener.Click
         camara.desconectar()
-        oconeccion.Insertar_clase(#4/10/2018#, 2)
-        oconeccion.Insertar_Asistencia(#12/11/2000#, 1, 1)
+        'oconeccion.Insertar_clase()
+        'oconeccion.Insertar_Asistencia(#12/11/2000#, 1, 1)
+        Pic_perfil.ImageLocation = "http://www.mathiaspereira.com/yoreciclo/img/alexis.jpg"
+
+
     End Sub
 
     Private Sub Cbo_Camaras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cbo_Camaras.SelectedIndexChanged
@@ -37,10 +40,19 @@ Public Class Form1
         camara.desconectar()
     End Sub
     Private Sub HORA_TIMER_Tick(sender As System.Object, e As System.EventArgs) Handles HORA_TIMER.Tick
-        oclase.hora_de_inicio_()
-        lbl_hora.Text = oclase.consultar_Hora
-        lbl_minuto.Text = oclase.consultar_minuto
-        Lbl_segundo.Text = oclase.consultar_segundo
+        punto += 1
+        oclase.TEMPORIZADOR()
+        lbl_hora.Text = oclase.Hora_
+        lbl_minuto.Text = oclase.Minuto_
+        Lbl_segundo.Text = oclase.Segundo_
+        If punto = 2 Then
+            Punto1.Visible = False
+            punto2.Visible = False
+            punto = 0
+        Else
+            Punto1.Visible = True
+            punto2.Visible = True
+        End If
     End Sub
     Public Sub codigo_obtenido(codigo1 As String)
         'METODO CARGA LOS ATRIBUTOS PERSONAS  DE LA BD
@@ -53,12 +65,22 @@ Public Class Form1
         ElseIf opersona.TipoDePersona = 1 Then 'alumno=1
             lbl_nombre.Text = "BIENVENIDO ALUMNO: " + opersona.ApellidoyNombre
 
+            Pic_perfil.ImageLocation = opersona.FOTO_
             'llamar metodo que de de alta a la persona en la tabla asistencia 
 
         ElseIf opersona.TipoDePersona = 2 Then 'Profesor =2
             lbl_nombre.Text = "Bienvenido Profesor: " + opersona.ApellidoyNombre
+            If opersona.FOTO_ = 1 Then
+                Pic_perfil.Image = Image.FromFile("C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\usuario.jpg")
+            Else
+                Pic_perfil.ImageLocation = opersona.FOTO_
+            End If
+            oclase.Segundo_ = 10
+            ' HORA_TIMER.Start()
             'insertar una nueva clase en la tabla clase
         End If
 
     End Sub
+
+
 End Class

@@ -7,33 +7,40 @@ Public Class Clase
     Private fecha_inicio As Date
     Private opersona As New Persona
     Private oconeccion As New coneccion
-    Private hora As Integer = 2
-    Private minutos As Integer = 0
-    Private segundo As Integer = 0
+    Private hora, minuto, segundo As Integer
     Private estado_clase As estado_de_la_clase
 
     Sub New()
 
     End Sub
 
-    Public ReadOnly Property consultar_Hora As String
+    Public Property Hora_ As Integer
         Get
             Return hora
         End Get
+        Set(value As Integer)
+            hora = value
+        End Set
 
     End Property
-    Public ReadOnly Property consultar_minuto As String
+    Public Property Minuto_ As Integer
         Get
-            Return minutos
+            Return minuto
 
         End Get
+        Set(value As Integer)
+            minuto = value
+        End Set
 
     End Property
-    Public ReadOnly Property consultar_segundo As String
+    Public Property Segundo_ As Integer
         Get
             Return segundo
 
         End Get
+        Set(value As Integer)
+            segundo = value
+        End Set
 
     End Property
 
@@ -45,25 +52,27 @@ Public Class Clase
             estado_clase = value
         End Set
     End Property
-    Public Sub hora_de_inicio_()
-
-        If (hora And minutos And segundo) = 0 Then
+    Public Sub TEMPORIZADOR()
+        If hora = 0 And minuto = 0 And segundo = 0 Then
+            Form_lector_asistencia.HORA_TIMER.Stop()
             MsgBox("Clase FINALIZADA")
-            Form1.HORA_TIMER.Stop()
             estado_clase = 0 'clase terminada
         Else
             If Not segundo = 0 Then
                 segundo -= 1
             Else
-                If Not minutos = 0 Then
-                    minutos -= 1
+                If Not minuto = 0 Then
+                    minuto -= 1
+                    segundo = 59
                 Else
                     hora -= 1
-
+                    minuto = 59
+                    segundo = 59
                 End If
-
             End If
         End If
-
+    End Sub
+    Public Sub insertar_clase()
+        oconeccion.Insertar_clase(#4/10/2018#, 2)
     End Sub
 End Class

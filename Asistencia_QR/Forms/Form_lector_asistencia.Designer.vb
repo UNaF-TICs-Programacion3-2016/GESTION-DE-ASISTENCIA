@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class Form_lector_asistencia
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -25,6 +25,7 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Me.QR_Picture = New System.Windows.Forms.PictureBox()
         Me.ASISTENCIA = New System.Windows.Forms.GroupBox()
+        Me.Pic_perfil = New System.Windows.Forms.PictureBox()
         Me.list_codigos = New System.Windows.Forms.ListBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lbl_nombre = New System.Windows.Forms.Label()
@@ -36,8 +37,11 @@ Partial Class Form1
         Me.lbl_hora = New System.Windows.Forms.Label()
         Me.lbl_minuto = New System.Windows.Forms.Label()
         Me.Lbl_segundo = New System.Windows.Forms.Label()
+        Me.Punto1 = New System.Windows.Forms.Label()
+        Me.punto2 = New System.Windows.Forms.Label()
         CType(Me.QR_Picture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ASISTENCIA.SuspendLayout()
+        CType(Me.Pic_perfil, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'QR_Picture
@@ -53,6 +57,7 @@ Partial Class Form1
         '
         'ASISTENCIA
         '
+        Me.ASISTENCIA.Controls.Add(Me.Pic_perfil)
         Me.ASISTENCIA.Controls.Add(Me.list_codigos)
         Me.ASISTENCIA.Controls.Add(Me.Label2)
         Me.ASISTENCIA.Controls.Add(Me.lbl_nombre)
@@ -63,10 +68,19 @@ Partial Class Form1
         Me.ASISTENCIA.Font = New System.Drawing.Font("Constantia", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.ASISTENCIA.Location = New System.Drawing.Point(12, 12)
         Me.ASISTENCIA.Name = "ASISTENCIA"
-        Me.ASISTENCIA.Size = New System.Drawing.Size(622, 392)
+        Me.ASISTENCIA.Size = New System.Drawing.Size(878, 432)
         Me.ASISTENCIA.TabIndex = 1
         Me.ASISTENCIA.TabStop = False
         Me.ASISTENCIA.Text = "ASISTENCIA AUTOMATICA"
+        '
+        'Pic_perfil
+        '
+        Me.Pic_perfil.Location = New System.Drawing.Point(17, 334)
+        Me.Pic_perfil.Name = "Pic_perfil"
+        Me.Pic_perfil.Size = New System.Drawing.Size(115, 74)
+        Me.Pic_perfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Pic_perfil.TabIndex = 9
+        Me.Pic_perfil.TabStop = False
         '
         'list_codigos
         '
@@ -95,10 +109,11 @@ Partial Class Form1
         Me.lbl_nombre.AutoSize = True
         Me.lbl_nombre.Font = New System.Drawing.Font("Constantia", 14.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_nombre.ForeColor = System.Drawing.Color.Blue
-        Me.lbl_nombre.Location = New System.Drawing.Point(48, 351)
+        Me.lbl_nombre.Location = New System.Drawing.Point(161, 363)
         Me.lbl_nombre.Name = "lbl_nombre"
-        Me.lbl_nombre.Size = New System.Drawing.Size(0, 23)
+        Me.lbl_nombre.Size = New System.Drawing.Size(17, 23)
         Me.lbl_nombre.TabIndex = 5
+        Me.lbl_nombre.Text = "1"
         '
         'Btn_detener
         '
@@ -140,44 +155,78 @@ Partial Class Form1
         'lbl_hora
         '
         Me.lbl_hora.AutoSize = True
-        Me.lbl_hora.Location = New System.Drawing.Point(713, 143)
+        Me.lbl_hora.Font = New System.Drawing.Font("Bell MT", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_hora.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lbl_hora.Location = New System.Drawing.Point(662, 132)
         Me.lbl_hora.Name = "lbl_hora"
-        Me.lbl_hora.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_hora.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.lbl_hora.Size = New System.Drawing.Size(51, 37)
         Me.lbl_hora.TabIndex = 2
-        Me.lbl_hora.Text = "Label1"
+        Me.lbl_hora.Text = "00"
         '
         'lbl_minuto
         '
         Me.lbl_minuto.AutoSize = True
-        Me.lbl_minuto.Location = New System.Drawing.Point(758, 143)
+        Me.lbl_minuto.Font = New System.Drawing.Font("Bell MT", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_minuto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lbl_minuto.Location = New System.Drawing.Point(719, 132)
         Me.lbl_minuto.Name = "lbl_minuto"
-        Me.lbl_minuto.Size = New System.Drawing.Size(39, 13)
+        Me.lbl_minuto.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.lbl_minuto.Size = New System.Drawing.Size(51, 37)
         Me.lbl_minuto.TabIndex = 3
-        Me.lbl_minuto.Text = "Label3"
+        Me.lbl_minuto.Text = "00"
         '
         'Lbl_segundo
         '
         Me.Lbl_segundo.AutoSize = True
-        Me.Lbl_segundo.Location = New System.Drawing.Point(803, 143)
+        Me.Lbl_segundo.Font = New System.Drawing.Font("Bell MT", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Lbl_segundo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Lbl_segundo.Location = New System.Drawing.Point(776, 132)
         Me.Lbl_segundo.Name = "Lbl_segundo"
-        Me.Lbl_segundo.Size = New System.Drawing.Size(39, 13)
+        Me.Lbl_segundo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Lbl_segundo.Size = New System.Drawing.Size(51, 37)
         Me.Lbl_segundo.TabIndex = 4
-        Me.Lbl_segundo.Text = "Label4"
+        Me.Lbl_segundo.Text = "00"
         '
-        'Form1
+        'Punto1
+        '
+        Me.Punto1.Font = New System.Drawing.Font("Bell MT", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Punto1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Punto1.Location = New System.Drawing.Point(702, 132)
+        Me.Punto1.Name = "Punto1"
+        Me.Punto1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Punto1.Size = New System.Drawing.Size(18, 37)
+        Me.Punto1.TabIndex = 5
+        Me.Punto1.Text = ":"
+        '
+        'punto2
+        '
+        Me.punto2.Font = New System.Drawing.Font("Bell MT", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.punto2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.punto2.Location = New System.Drawing.Point(761, 132)
+        Me.punto2.Name = "punto2"
+        Me.punto2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.punto2.Size = New System.Drawing.Size(18, 37)
+        Me.punto2.TabIndex = 6
+        Me.punto2.Text = ":"
+        '
+        'Form_lector_asistencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(902, 484)
+        Me.ClientSize = New System.Drawing.Size(1068, 507)
+        Me.Controls.Add(Me.punto2)
+        Me.Controls.Add(Me.Punto1)
         Me.Controls.Add(Me.Lbl_segundo)
         Me.Controls.Add(Me.lbl_minuto)
         Me.Controls.Add(Me.lbl_hora)
         Me.Controls.Add(Me.ASISTENCIA)
-        Me.Name = "Form1"
+        Me.Name = "Form_lector_asistencia"
         Me.Text = "Form1"
         CType(Me.QR_Picture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ASISTENCIA.ResumeLayout(False)
         Me.ASISTENCIA.PerformLayout()
+        CType(Me.Pic_perfil, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -196,4 +245,7 @@ Partial Class Form1
     Friend WithEvents lbl_hora As Label
     Friend WithEvents lbl_minuto As Label
     Friend WithEvents Lbl_segundo As Label
+    Friend WithEvents Punto1 As Label
+    Friend WithEvents punto2 As Label
+    Friend WithEvents Pic_perfil As PictureBox
 End Class

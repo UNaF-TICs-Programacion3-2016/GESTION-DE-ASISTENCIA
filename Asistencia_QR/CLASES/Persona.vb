@@ -15,7 +15,7 @@ Public Class Persona
     Private TipoPersona As tipo_de_persona
     Private ID As Long
     Private oconeccion As New coneccion
-
+    Private foto As String
     'constructor
     Public Sub New()
         '    Me.hora_ = TimeOfDay
@@ -35,6 +35,12 @@ Public Class Persona
         End Get
 
     End Property
+    Friend ReadOnly Property FOTO_() As String
+        Get
+            Return Me.foto
+        End Get
+
+    End Property
     Friend ReadOnly Property TipoDePersona() As tipo_de_persona
         Get
             Return Me.TipoPersona
@@ -49,13 +55,23 @@ Public Class Persona
     Friend Sub caragar_datos(ByVal codigo As String)
         Dim fila As DataRow
         'consultar tipo de persona
-        Me.TipoPersona = oconeccion.consultar_Tpo_Persona(codigo)
+        Me.TipoPersona = CInt(oconeccion.consultar_Tpo_Persona(codigo))
         If Me.TipoPersona = 3 Then Exit Sub
         'cargar atributos
-        fila = oconeccion.consultar_datos(codigo).Rows(0)
+        Try
+            fila = oconeccion.consultar_datos(codigo).Rows(0)
 
-        Me.Apellido_y_Nombre = fila.ItemArray(2)
-        Me.DNI_ = fila.ItemArray(3)
-        Me.ID = fila.ItemArray(0)
+            Me.Apellido_y_Nombre = fila.ItemArray(2)
+            Me.DNI_ = fila.ItemArray(3)
+            Me.ID = fila.ItemArray(0)
+            If fila.ItemArray(7) = "" Then
+            Else
+                Me.foto = fila.ItemArray(7)
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class
