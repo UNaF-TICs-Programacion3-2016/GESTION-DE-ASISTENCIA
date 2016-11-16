@@ -5,7 +5,7 @@ Public Enum tipo_de_persona As Byte
     alumno = 1
     profesor = 2
 End Enum
-'CLASE PERSONA Abstracta
+
 Public Class Persona
 
 
@@ -14,8 +14,9 @@ Public Class Persona
     Private DNI_ As Long
     Private TipoPersona As tipo_de_persona
     Private ID As Long
-    Private oconeccion As New coneccion
     Private foto As String
+    Private oconeccion As New coneccion
+    Private oclase As New Clase
     'constructor
     Public Sub New()
         '    Me.hora_ = TimeOfDay
@@ -73,5 +74,15 @@ Public Class Persona
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+    Public Sub insertar_PRESENTE()
+
+        Dim fecha_y_hora As Date = String.Format("{0:G}", DateTime.Now)
+
+        oconeccion.Insertar_Asistencia(fecha_y_hora, oclase.ID_, ID)
+    End Sub
+    Public Sub INSERTAR_NUEVA_CLASE()
+        Dim fecha_y_hora As Date = String.Format("{0:G}", DateTime.Now)
+        oconeccion.Insertar_clase(fecha_y_hora, oclase.nombre_clase_, oclase.COMISION_)
     End Sub
 End Class

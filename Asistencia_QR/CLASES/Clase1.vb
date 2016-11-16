@@ -3,12 +3,13 @@
     iniciado = 1
 End Enum
 Public Class Clase
-    Private clase_nro As Integer
+    Private Nombre_Clase As Integer
     Private fecha_inicio As Date
-    Private opersona As New Persona
+    Private ID As Long
     Private oconeccion As New coneccion
     Private hora, minuto, segundo As Integer
     Private estado_clase As estado_de_la_clase
+    Private COMISION As Integer
 
     Sub New()
 
@@ -43,7 +44,34 @@ Public Class Clase
         End Set
 
     End Property
+    Public Property nombre_clase_ As String
+        Get
+            Return Nombre_Clase
 
+        End Get
+        Set(value As String)
+            Nombre_Clase = value
+        End Set
+
+    End Property
+    Public Property ID_ As Long
+        Get
+            Return ID
+        End Get
+        Set(value As Long)
+            ID = value
+        End Set
+
+    End Property
+    Public Property COMISION_ As Integer
+        Get
+            Return COMISION
+        End Get
+        Set(value As Integer)
+            COMISION = value
+        End Set
+
+    End Property
     Public Property Estado_Clase_() As estado_de_la_clase
         Get
             Return estado_clase
@@ -72,7 +100,5 @@ Public Class Clase
             End If
         End If
     End Sub
-    Public Sub insertar_clase()
-        oconeccion.Insertar_clase(#4/10/2018#, 2)
-    End Sub
+
 End Class

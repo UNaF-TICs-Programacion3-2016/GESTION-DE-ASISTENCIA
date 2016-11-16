@@ -3,8 +3,8 @@ Imports AForge.Video
 Public Class Form_lector_asistencia
     Private oconeccion As New coneccion
     Private camara As New lector_qr
-    Private opersona As New Persona
-    Private oclase As New Clase
+    Friend opersona As New Persona
+    Friend oclase As New Clase
     Private punto As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         camara.cargar_comb()
@@ -27,10 +27,10 @@ Public Class Form_lector_asistencia
         HORA_TIMER.Stop()
     End Sub
     Private Sub Btn_detener_Click(sender As Object, e As EventArgs) Handles Btn_detener.Click
-        camara.desconectar()
+        'camara.desconectar()
         'oconeccion.Insertar_clase()
         'oconeccion.Insertar_Asistencia(#12/11/2000#, 1, 1)
-        Pic_perfil.ImageLocation = "http://www.mathiaspereira.com/yoreciclo/img/alexis.jpg"
+        Form_Inicio_clase.Show()
 
 
     End Sub
@@ -57,26 +57,42 @@ Public Class Form_lector_asistencia
     Public Sub codigo_obtenido(codigo1 As String)
         'METODO CARGA LOS ATRIBUTOS PERSONAS  DE LA BD
         opersona.caragar_datos(codigo1)
+
         'VALIDACION PERSONA
         If opersona.TipoDePersona = 3 Then 'NO ESTA EN LA BD =3
             lbl_nombre.Text = "NO SE ENCUENTRA EN LA BASE DE DATOS"
 
 
         ElseIf opersona.TipoDePersona = 1 Then 'alumno=1
+
+            'If oclase.Estado_Clase_ = 0 Then MsgBox("Clase no iniciada") Exit Sub 'valida si la clase esta iniciada
+
             lbl_nombre.Text = "BIENVENIDO ALUMNO: " + opersona.ApellidoyNombre
 
-            Pic_perfil.ImageLocation = opersona.FOTO_
+            Pic_perfil.ImageLocation = opersona.FOTO_ 'ingresa la foto del alumno
+
+            ' opersona.insertar_a_clase() ' inserta a clase el alumno
+
             'llamar metodo que de de alta a la persona en la tabla asistencia 
 
+
+
         ElseIf opersona.TipoDePersona = 2 Then 'Profesor =2
+
             lbl_nombre.Text = "Bienvenido Profesor: " + opersona.ApellidoyNombre
+
             If opersona.FOTO_ = 1 Then
                 Pic_perfil.Image = Image.FromFile("C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\usuario.jpg")
             Else
                 Pic_perfil.ImageLocation = opersona.FOTO_
             End If
-            oclase.Segundo_ = 10
-            ' HORA_TIMER.Start()
+
+            oclase.Estado_Clase_ = 1 'estado de la clase iniciado
+
+            oclase.Segundo_ = 10 'ingresa tiempo de la clase
+
+            ' HORA_TIMER.Start()  ' inicia el temporizador
+
             'insertar una nueva clase en la tabla clase
         End If
 

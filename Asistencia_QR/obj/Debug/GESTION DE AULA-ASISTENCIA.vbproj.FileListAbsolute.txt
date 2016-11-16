@@ -17,3 +17,8 @@ C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug
 C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.pdb
 C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.Form_Inicio_clase.resources
 C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.Form_lector_asistencia.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\AForge.Video.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\zxing.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\es\Microsoft.QualityTools.Testing.Fakes.resources.dll

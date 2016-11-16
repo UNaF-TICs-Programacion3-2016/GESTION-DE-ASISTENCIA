@@ -1,0 +1,21 @@
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\Asistencia_QR.exe.config
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\GESTION DE AULA-ASISTENCIA.vbprojResolveAssemblyReference.cache
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\Asistencia_QR.Form_Inicio_clase.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\Asistencia_QR.Form_lector_asistencia.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\Asistencia_QR.Resources.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\GESTION DE AULA-ASISTENCIA.vbproj.GenerateResource.Cache
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\Asistencia_QR.exe
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\Asistencia_QR.pdb
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\Asistencia_QR.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\AForge.Video.DirectShow.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\AForge.Video.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\zxing.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\AForge.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\AForge.Video.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\AForge.Video.DirectShow.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\zxing.pdb
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\zxing.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\x64\Debug\AForge.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\Asistencia_QR.exe
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\Asistencia_QR.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\x64\Debug\Asistencia_QR.pdb
