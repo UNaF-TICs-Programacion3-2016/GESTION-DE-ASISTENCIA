@@ -1,13 +1,14 @@
 ﻿
 Imports AForge.Video
 Public Class Form_inicio
-    Private oconeccion As New coneccion
+    Friend oconeccion As New coneccion
     Private camara As New lector_qr
     Friend opersona As New Persona
     Friend oclase As New Clase
     Private punto As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         camara.cargar_comb()
+
     End Sub
 
     Private Sub Btn_Iniciar_Click(sender As Object, e As EventArgs) Handles Btn_Iniciar.Click
@@ -28,9 +29,8 @@ Public Class Form_inicio
     End Sub
     Private Sub Btn_detener_Click(sender As Object, e As EventArgs) Handles Btn_detener.Click
         'camara.desconectar()
-        'oconeccion.Insertar_clase()
-        'oconeccion.Insertar_Asistencia(#12/11/2000#, 1, 1)
-        Form_Profesor.Show()
+
+        'Form_Profesor.Show()
 
 
     End Sub
@@ -65,6 +65,7 @@ Public Class Form_inicio
         lbl_nombre.Text = "Ingresar Asistencia" 'lbl bajo la camara que muestra el inicio de asistencia
 
         oclase.ID_ = oconeccion.consultar_iD_clase ' obtener id de la clase
+
     End Sub
     Public Sub codigo_obtenido(codigo1 As String)
         'METODO CARGA LOS ATRIBUTOS PERSONAS  DE LA BD
@@ -73,7 +74,7 @@ Public Class Form_inicio
         'VALIDACION PERSONA
         If opersona.TipoDePersona = 3 Then 'NO ESTA EN LA BD =3
             lbl_nombre.Text = "NO SE ENCUENTRA EN LA BASE DE DATOS"
-
+            Pic_perfil = Nothing
 
         ElseIf opersona.TipoDePersona = 1 Then 'alumno=1
 

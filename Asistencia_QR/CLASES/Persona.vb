@@ -82,6 +82,6 @@ Public Class Persona
     End Sub
     Public Sub INSERTAR_NUEVA_CLASE()
         Dim fecha_y_hora As Date = String.Format("{0:G}", DateTime.Now)
-        oconeccion.Insertar_clase(fecha_y_hora, Form_inicio.oclase.nombre_clase_, Form_inicio.oclase.ID_COMISION)
+        oconeccion.Insertar_clase(fecha_y_hora, Form_inicio.oclase.nombre_clase_, Form_inicio.oclase.ID_COMISION, Form_inicio.oclase.ID_Materia_)
     End Sub
 End Class

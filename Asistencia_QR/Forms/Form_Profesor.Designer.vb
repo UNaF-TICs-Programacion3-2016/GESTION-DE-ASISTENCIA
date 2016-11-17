@@ -144,7 +144,7 @@ Partial Class Form_Profesor
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
         '
-        'Form_Inicio_clase
+        'Form_Profesor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -154,8 +154,9 @@ Partial Class Form_Profesor
         Me.Controls.Add(Me.pic_profesor)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lbl_Bienvenida)
-        Me.Name = "Form_Inicio_clase"
-        Me.Text = "Form2"
+        Me.Name = "Form_Profesor"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Iniciar Clase"
         CType(Me.pic_profesor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

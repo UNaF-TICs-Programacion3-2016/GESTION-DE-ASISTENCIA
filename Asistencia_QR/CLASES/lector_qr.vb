@@ -16,7 +16,7 @@ Public Class lector_qr
             For i As Integer = 0 To FUENTES.Count - 1
                 Form_inicio.Cbo_Camaras.Items.Add(FUENTES(i).Name.ToString())
             Next
-            Form_inicio.Cbo_Camaras.SelectedIndex = 0
+            Form_inicio.Cbo_Camaras.SelectedIndex = 1
         Else
             MsgBox("NO HAY CAMARAS DISPONIBLES")
         End If
@@ -28,7 +28,7 @@ Public Class lector_qr
         AddHandler CAMARA.NewFrame, New NewFrameEventHandler(AddressOf Form_inicio.video_NuevoFrame1)
         CAMARA.Start()
         'INICIA ESCANEO
-        Form_inicio.Btn_Iniciar.BackColor = Color.LawnGreen
+
         Form_inicio.Timer1.Interval = 900
         Form_inicio.Timer1.Start()
     End Sub

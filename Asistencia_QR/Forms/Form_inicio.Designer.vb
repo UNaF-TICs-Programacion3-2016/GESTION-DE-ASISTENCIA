@@ -277,7 +277,8 @@ Partial Class Form_inicio
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ASISTENCIA)
         Me.Name = "Form_inicio"
-        Me.Text = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Gestion de Asistencia Automatico"
         CType(Me.QR_Picture, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Pic_perfil, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ASISTENCIA.ResumeLayout(False)

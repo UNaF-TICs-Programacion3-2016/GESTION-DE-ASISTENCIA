@@ -101,7 +101,7 @@ Public Class coneccion
         End Try
     End Sub
 
-    Public Sub Insertar_clase(ByVal fecha_clase As Date, ByVal DESCRIPCION_CLASE_ As String, ByVal comision_id As Long)
+    Public Sub Insertar_clase(ByVal fecha_clase As Date, ByVal DESCRIPCION_CLASE_ As String, ByVal comision_id As String, id_materia As String)
         Dim Comando As New OracleCommand()
         Dim Almacenamiento As New DataSet()
         Dim Fila As DataRow
@@ -117,22 +117,40 @@ Public Class coneccion
 
             Fila("FECHA_CLASE") = fecha_clase
             Fila("RELA_COMISION_CLASE") = comision_id
-            Fila("DESCIPCION_CLASE") = DESCRIPCION_CLASE_
-
+            Fila("DESCRIPCION_CLASE") = DESCRIPCION_CLASE_
+            Fila("RELA_MATERIA_CLASE") = id_materia
             Comando.Connection = Conexion
             Almacenamiento.Tables("CLASE").Rows.Add(Fila)
 
-            Comando.CommandText = "Insert Into CLASE VALUES(:id_CLASE,:NOMBRE_CLASE,:RELA_COMISION_CLASE,:DESCIPCION_CLASE)"
+            Comando.CommandText = "Insert Into CLASE VALUES(:id_CLASE,:NOMBRE_CLASE,:RELA_COMISION_CLASE,:DESCIPCION_CLASE,:RELA_MATERIA_CLASE)"
             Comando.Parameters.Add(New OracleParameter(":ID_CLASE", OracleDbType.Long, 10, "ID_CLASE"))
             Comando.Parameters.Add(New OracleParameter(":FECHA_CLASE", OracleDbType.Date, 100, "FECHA_CLASE"))
             Comando.Parameters.Add(New OracleParameter(":RELA_COMISION_CLASE", OracleDbType.Long, 100, "RELA_COMISION_CLASE"))
-            Comando.Parameters.Add(New OracleParameter(":DESCIPCION_CLASE", OracleDbType.Varchar2, 100, "DESCIPCION_CLASE"))
+            Comando.Parameters.Add(New OracleParameter(":DESCRIPCION_CLASE", OracleDbType.Varchar2, 100, "DESCRIPCION_CLASE"))
+            Comando.Parameters.Add(New OracleParameter(":RELA_MATERIA_CLASE", OracleDbType.Varchar2, 100, "RELA_MATERIA_CLASE"))
             Adaptador.InsertCommand = Comando
             Adaptador.Update(Almacenamiento, "CLASE")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+    Public Function CargarCombo_Materia(id_profesor As String) As OracleDataReader
+        Dim Conexion As New OracleConnection()
+        Dim Comando As New OracleCommand("SELECT * FROM profesor_materia,persona,materia  WHERE profesor_materia.RELA_PROFESOR=persona.ID_PERSONA AND profesor_materia.RELA_MATERIA= materia.id_materia and PROFESOR_MATERIA.RELA_PROFESOR =" + id_profesor, Conexion)
+        Dim Reader As OracleDataReader
+        Try
 
+            Conexion.ConnectionString = "Data Source=localhost;" _
+                                        + "User Id=asistencia;" _
+                                        + "Password=gaston12;"
+            Conexion.Open()
+
+            Reader = Comando.ExecuteReader(CommandBehavior.CloseConnection)
+        Catch EX As Exception
+            MessageBox.Show(EX.Message)
+
+        End Try
+        Return Reader
+    End Function
 
 End Class

@@ -10,6 +10,7 @@ Public Class Clase
     Private hora, minuto, segundo As Integer
     Private estado_clase As estado_de_la_clase
     Private COMISION As Integer
+    Private ID_materia As Long
 
     Sub New()
 
@@ -69,6 +70,15 @@ Public Class Clase
         End Get
         Set(value As Integer)
             COMISION = value
+        End Set
+
+    End Property
+    Public Property ID_Materia_ As Long
+        Get
+            Return Me.ID_materia
+        End Get
+        Set(value As Long)
+            Me.ID_materia = value
         End Set
 
     End Property
