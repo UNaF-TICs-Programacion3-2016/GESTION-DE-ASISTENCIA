@@ -8,7 +8,6 @@ End Enum
 
 Public Class Persona
 
-
     'ATRIBUTOS
     Private Apellido_y_Nombre As String
     Private DNI_ As Long
@@ -16,7 +15,7 @@ Public Class Persona
     Private ID As Long
     Private foto As String
     Private oconeccion As New coneccion
-    Private oclase As New Clase
+
     'constructor
     Public Sub New()
         '    Me.hora_ = TimeOfDay
@@ -79,10 +78,10 @@ Public Class Persona
 
         Dim fecha_y_hora As Date = String.Format("{0:G}", DateTime.Now)
 
-        oconeccion.Insertar_Asistencia(fecha_y_hora, oclase.ID_, ID)
+        oconeccion.Insertar_Asistencia(fecha_y_hora, Form_inicio.oclase.ID_, ID)
     End Sub
     Public Sub INSERTAR_NUEVA_CLASE()
         Dim fecha_y_hora As Date = String.Format("{0:G}", DateTime.Now)
-        oconeccion.Insertar_clase(fecha_y_hora, oclase.nombre_clase_, oclase.COMISION_)
+        oconeccion.Insertar_clase(fecha_y_hora, Form_inicio.oclase.nombre_clase_, Form_inicio.oclase.ID_COMISION)
     End Sub
 End Class

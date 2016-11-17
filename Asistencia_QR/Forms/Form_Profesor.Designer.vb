@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form_Inicio_clase
+Partial Class Form_Profesor
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -31,7 +31,7 @@ Partial Class Form_Inicio_clase
         Me.Label2 = New System.Windows.Forms.Label()
         Me.comb_comision = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txt_descripcion = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.pic_profesor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -42,7 +42,7 @@ Partial Class Form_Inicio_clase
         Me.lbl_Bienvenida.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.lbl_Bienvenida.AutoSize = True
         Me.lbl_Bienvenida.Font = New System.Drawing.Font("Lucida Bright", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_Bienvenida.Location = New System.Drawing.Point(209, 38)
+        Me.lbl_Bienvenida.Location = New System.Drawing.Point(89, 40)
         Me.lbl_Bienvenida.Name = "lbl_Bienvenida"
         Me.lbl_Bienvenida.Size = New System.Drawing.Size(61, 18)
         Me.lbl_Bienvenida.TabIndex = 0
@@ -98,7 +98,7 @@ Partial Class Form_Inicio_clase
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Lucida Bright", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(61, 63)
+        Me.Label2.Location = New System.Drawing.Point(47, 64)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(91, 18)
         Me.Label2.TabIndex = 5
@@ -116,24 +116,24 @@ Partial Class Form_Inicio_clase
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Lucida Bright", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 110)
+        Me.Label3.Location = New System.Drawing.Point(10, 106)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(161, 18)
+        Me.Label3.Size = New System.Drawing.Size(128, 18)
         Me.Label3.TabIndex = 8
-        Me.Label3.Text = "Descripcion Clase :"
+        Me.Label3.Text = "Tema De Hoy :"
         '
-        'TextBox1
+        'txt_descripcion
         '
-        Me.TextBox1.Location = New System.Drawing.Point(184, 97)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(174, 48)
-        Me.TextBox1.TabIndex = 9
+        Me.txt_descripcion.Location = New System.Drawing.Point(158, 107)
+        Me.txt_descripcion.Multiline = True
+        Me.txt_descripcion.Name = "txt_descripcion"
+        Me.txt_descripcion.Size = New System.Drawing.Size(174, 21)
+        Me.txt_descripcion.TabIndex = 9
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.txt_descripcion)
         Me.GroupBox1.Controls.Add(Me.comb_materias)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -143,7 +143,6 @@ Partial Class Form_Inicio_clase
         Me.GroupBox1.Size = New System.Drawing.Size(433, 158)
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
         '
         'Form_Inicio_clase
         '
@@ -174,6 +173,6 @@ Partial Class Form_Inicio_clase
     Friend WithEvents Label2 As Label
     Friend WithEvents comb_comision As ComboBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txt_descripcion As TextBox
     Friend WithEvents GroupBox1 As GroupBox
 End Class

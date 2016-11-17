@@ -25,7 +25,7 @@ Public Class coneccion
     End Sub
 
     Public Function consultar_datos(CODIGO As String) As DataTable
-        Conexion.ConnectionString = "Data Source=localhost;" + "User Id=asistencia;" + "Password=gaston12;"
+      
         Dim PERSONAS As New DataSet
         Dim Tabla As New DataTable
         Dim Adaptador As New OracleDataAdapter("SELECT * from PERSONA WHERE CODIGO_PERSONA =" + CODIGO, Conexion)
@@ -37,7 +37,7 @@ Public Class coneccion
         Return Tabla
     End Function
     Public Function consultar_Tpo_Persona(CODIGO As String) As tipo_de_persona
-        Conexion.ConnectionString = "Data Source=localhost;" + "User Id=asistencia;" + "Password=gaston12;"
+
         Dim PERSONAS As New DataSet
         Dim Tabla As New DataTable
         Dim Adaptador As New OracleDataAdapter("SELECT  TIPO_PERSONA(" + CODIGO + ") From dual", Conexion)
@@ -52,12 +52,27 @@ Public Class coneccion
             Return 3
         End Try
     End Function
+    Public Function consultar_iD_clase() As Long
+        Dim PERSONAS As New DataSet
+        Dim Tabla As New DataTable
+        Dim Adaptador As New OracleDataAdapter("SELECT MAX(ID_clase) FROM clase;", Conexion)
+        Dim fila As DataRow
+
+
+        Adaptador.Fill(PERSONAS, "dual")
+        Tabla = PERSONAS.Tables("dual")
+        fila = Tabla.Rows(0)
+        Return fila.ItemArray(0)
+
+
+
+    End Function
 
     Public Sub Insertar_Asistencia(ByVal fecha_hora As Date, ByVal ID_clase As Long, ByVal alumno_id As Long)
         Dim Comando As New OracleCommand()
         Dim Almacenamiento As New DataSet()
         Dim Fila As DataRow
-        Conexion.ConnectionString = "Data Source=localhost;" + "User Id=asistencia;" + "Password=gaston12;"
+        
         Almacenamiento.Clear()
 
         Dim Adaptador = New OracleDataAdapter("Select * From ASISTENCIA", Conexion)
@@ -67,7 +82,7 @@ Public Class coneccion
             Fila = Almacenamiento.Tables("ASISTENCIA").NewRow()
 
 
-            Fila("HORA_ASISTENCIA") = fecha_hora
+            Fila("HORA_ASISTENCIA") =CStr ( fecha_hora)
             Fila("RELA_CLASE_ASISTENCIA") = ID_clase
             Fila("RELA_ALUMNO_ASISTENCIA") = alumno_id
 
@@ -76,7 +91,7 @@ Public Class coneccion
 
             Comando.CommandText = "Insert Into ASISTENCIA VALUES(:id_ASISTENCIA,:HORA_ASISTENCIA,:RELA_CLASE_ASISTENCIA,:RELA_ALUMNO_ASISTENCIA)"
             Comando.Parameters.Add(New OracleParameter(":id_ASISTENCIA", OracleDbType.Long, 10, "id_ASISTENCIA"))
-            Comando.Parameters.Add(New OracleParameter(":HORA_ASISTENCIA", OracleDbType.Date, 10, "HORA_ASISTENCIA"))
+            Comando.Parameters.Add(New OracleParameter(":HORA_ASISTENCIA", OracleDbType.Varchar2, 100, "HORA_ASISTENCIA"))
             Comando.Parameters.Add(New OracleParameter(":RELA_CLASE_ASISTENCIA", OracleDbType.Long, 100, "RELA_CLASE_ASISTENCIA"))
             Comando.Parameters.Add(New OracleParameter(":RELA_ALUMNO_ASISTENCIA", OracleDbType.Long, 10, "RELA_ALUMNO_ASISTENCIA"))
             Adaptador.InsertCommand = Comando
@@ -109,7 +124,7 @@ Public Class coneccion
 
             Comando.CommandText = "Insert Into CLASE VALUES(:id_CLASE,:NOMBRE_CLASE,:RELA_COMISION_CLASE,:DESCIPCION_CLASE)"
             Comando.Parameters.Add(New OracleParameter(":ID_CLASE", OracleDbType.Long, 10, "ID_CLASE"))
-            Comando.Parameters.Add(New OracleParameter(":FECHA_CLASE", OracleDbType.Date, 10, "FECHA_CLASE"))
+            Comando.Parameters.Add(New OracleParameter(":FECHA_CLASE", OracleDbType.Date, 100, "FECHA_CLASE"))
             Comando.Parameters.Add(New OracleParameter(":RELA_COMISION_CLASE", OracleDbType.Long, 100, "RELA_COMISION_CLASE"))
             Comando.Parameters.Add(New OracleParameter(":DESCIPCION_CLASE", OracleDbType.Varchar2, 100, "DESCIPCION_CLASE"))
             Adaptador.InsertCommand = Comando

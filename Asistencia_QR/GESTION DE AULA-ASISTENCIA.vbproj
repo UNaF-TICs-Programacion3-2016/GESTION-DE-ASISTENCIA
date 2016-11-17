@@ -137,18 +137,18 @@
   <ItemGroup>
     <Compile Include="CLASES\Clase1.vb" />
     <Compile Include="CLASES\CONECCION.vb" />
-    <Compile Include="Forms\Form_lector_asistencia.vb">
+    <Compile Include="Forms\Form_inicio.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_lector_asistencia.Designer.vb">
-      <DependentUpon>Form_lector_asistencia.vb</DependentUpon>
+    <Compile Include="Forms\Form_inicio.Designer.vb">
+      <DependentUpon>Form_inicio.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CLASES\lector_qr.vb" />
-    <Compile Include="Forms\Form_Inicio_clase.Designer.vb">
-      <DependentUpon>Form_Inicio_clase.vb</DependentUpon>
+    <Compile Include="Forms\Form_Profesor.Designer.vb">
+      <DependentUpon>Form_Profesor.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form_Inicio_clase.vb">
+    <Compile Include="Forms\Form_Profesor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -169,11 +169,11 @@
     <Compile Include="CLASES\Persona.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Form_Inicio_clase.resx">
-      <DependentUpon>Form_Inicio_clase.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_Profesor.resx">
+      <DependentUpon>Form_Profesor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_lector_asistencia.resx">
-      <DependentUpon>Form_lector_asistencia.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_inicio.resx">
+      <DependentUpon>Form_inicio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

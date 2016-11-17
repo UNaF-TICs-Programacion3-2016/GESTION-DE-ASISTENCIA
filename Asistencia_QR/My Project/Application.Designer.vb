@@ -32,7 +32,7 @@ Namespace My
 
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()> _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Asistencia_QR.Form_lector_asistencia
+            Me.MainForm = Global.Asistencia_QR.Form_inicio
         End Sub
     End Class
 End Namespace

@@ -3,7 +3,7 @@
     iniciado = 1
 End Enum
 Public Class Clase
-    Private Nombre_Clase As Integer
+    Private Nombre_Clase As String
     Private fecha_inicio As Date
     Private ID As Long
     Private oconeccion As New coneccion
@@ -63,7 +63,7 @@ Public Class Clase
         End Set
 
     End Property
-    Public Property COMISION_ As Integer
+    Public Property ID_COMISION As Integer
         Get
             Return COMISION
         End Get
@@ -82,7 +82,7 @@ Public Class Clase
     End Property
     Public Sub TEMPORIZADOR()
         If hora = 0 And minuto = 0 And segundo = 0 Then
-            Form_lector_asistencia.HORA_TIMER.Stop()
+            Form_inicio.HORA_TIMER.Stop()
             MsgBox("Clase FINALIZADA")
             estado_clase = 0 'clase terminada
         Else
