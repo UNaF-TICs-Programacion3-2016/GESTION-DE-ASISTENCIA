@@ -6,6 +6,7 @@ Public Class lector_qr
     Private WithEvents CAMARA As VideoCaptureDevice 'CAMARA 
     Private IMAGEN As Bitmap 'IMAGENES CAMARA
     Private contenedor As String = 0
+
     Sub New()
 
     End Sub
@@ -29,7 +30,7 @@ Public Class lector_qr
         CAMARA.Start()
         'INICIA ESCANEO
 
-        Form_inicio.Timer1.Interval = 900
+        Form_inicio.Timer1.Interval = 1000
         Form_inicio.Timer1.Start()
     End Sub
 
@@ -46,9 +47,8 @@ Public Class lector_qr
             Dim DECODER As BarcodeReader = New BarcodeReader
             Dim resultado As String = DECODER.Decode(IMAGEN).ToString
             If contenedor <> resultado Then
-                Form_inicio.list_codigos.Items.Add(resultado)
                 contenedor = resultado
-                Form_inicio.codigo_obtenido(resultado)
+                Dim opersona As New Persona(resultado) ' istancio la clase persona  con un parametro 
             End If
         Catch ex As Exception
 
@@ -62,5 +62,12 @@ Public Class lector_qr
         Set(value As Bitmap)
             Me.IMAGEN = value
         End Set
+    End Property
+
+    Public ReadOnly Property codigo_persona As String
+        Get
+            Return contenedor
+        End Get
+
     End Property
 End Class

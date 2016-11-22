@@ -67,6 +67,29 @@ Public Class coneccion
 
 
     End Function
+    Public Function Validar_presente(ByVal id_persona As String, ByVal id_clase As String) As Integer
+        Dim DATASET As New DataSet
+        Dim Tabla As New DataTable
+        Dim Adaptador As New OracleDataAdapter("select persona.NOMBRE_PERSONA FROM persona,asistencia, CLASE where persona.id_persona = asistencia.rela_ALUMNO_ASISTENCIA " _
+                                               + "AND asistencia.RELA_CLASE_ASISTENCIA=CLASE.ID_CLASE And persona.ID_PERSONA=" + id_persona + " and CLASE.ID_CLASE=" + id_clase, Conexion)
+        Dim fila As DataRow
+        Try
+
+
+            Adaptador.Fill(DATASET, "dual")
+            Tabla = DATASET.Tables("dual")
+            fila = Tabla.Rows(0)
+            If fila.ItemArray(0) = "" Then
+                Return 0
+            End If
+            Return 1
+        Catch ex As Exception
+            Return 0
+        End Try
+
+
+
+    End Function
 
     Public Sub Insertar_Asistencia(ByVal fecha_hora As Date, ByVal ID_clase As Long, ByVal alumno_id As Long)
         Dim Comando As New OracleCommand()
@@ -101,7 +124,7 @@ Public Class coneccion
         End Try
     End Sub
 
-    Public Sub Insertar_clase(ByVal fecha_clase As Date, ByVal DESCRIPCION_CLASE_ As String, ByVal comision_id As String, id_materia As String)
+    Public Sub Insertar_clase(ByVal fecha_clase As String, ByVal DESCRIPCION_CLASE_ As String, ByVal comision_id As String, id_materia As String)
         Dim Comando As New OracleCommand()
         Dim Almacenamiento As New DataSet()
         Dim Fila As DataRow
@@ -115,7 +138,7 @@ Public Class coneccion
             Fila = Almacenamiento.Tables("CLASE").NewRow()
 
 
-            Fila("FECHA_CLASE") = fecha_clase
+            Fila("FECHA_CLASE") = fecha_clase.ToString
             Fila("RELA_COMISION_CLASE") = comision_id
             Fila("DESCRIPCION_CLASE") = DESCRIPCION_CLASE_
             Fila("RELA_MATERIA_CLASE") = id_materia
@@ -124,7 +147,7 @@ Public Class coneccion
 
             Comando.CommandText = "Insert Into CLASE VALUES(:id_CLASE,:NOMBRE_CLASE,:RELA_COMISION_CLASE,:DESCIPCION_CLASE,:RELA_MATERIA_CLASE)"
             Comando.Parameters.Add(New OracleParameter(":ID_CLASE", OracleDbType.Long, 10, "ID_CLASE"))
-            Comando.Parameters.Add(New OracleParameter(":FECHA_CLASE", OracleDbType.Date, 100, "FECHA_CLASE"))
+            Comando.Parameters.Add(New OracleParameter(":FECHA_CLASE", OracleDbType.Varchar2, 100, "FECHA_CLASE"))
             Comando.Parameters.Add(New OracleParameter(":RELA_COMISION_CLASE", OracleDbType.Long, 100, "RELA_COMISION_CLASE"))
             Comando.Parameters.Add(New OracleParameter(":DESCRIPCION_CLASE", OracleDbType.Varchar2, 100, "DESCRIPCION_CLASE"))
             Comando.Parameters.Add(New OracleParameter(":RELA_MATERIA_CLASE", OracleDbType.Varchar2, 100, "RELA_MATERIA_CLASE"))

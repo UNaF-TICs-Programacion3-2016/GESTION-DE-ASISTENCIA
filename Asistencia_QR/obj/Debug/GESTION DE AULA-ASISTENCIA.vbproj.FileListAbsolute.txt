@@ -22,3 +22,6 @@ C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug
 C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
 C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.Form_profesor.resources
 C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.Form_inicio.resources
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\Asistencia_QR\obj\Debug\Asistencia_QR.splass.resources

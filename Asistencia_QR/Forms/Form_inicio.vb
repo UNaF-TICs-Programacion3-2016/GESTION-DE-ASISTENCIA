@@ -1,13 +1,30 @@
-﻿
+﻿Imports System.ComponentModel
+Imports System.Text
+Imports DevComponents.DotNetBar.Metro
+Imports DevComponents.DotNetBar
 Imports AForge.Video
 Public Class Form_inicio
-    Friend oconeccion As New coneccion
-    Private camara As New lector_qr
-    Friend opersona As New Persona
-    Friend oclase As New Clase
+    Inherits MetroForm
+    Friend camara As New lector_qr
     Private punto As Integer
+    Private CONT_TIMER As Int16
+
+    Public Sub New()
+        'disenio fom
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        WebBrowserClima.Navigate("https://www.google.com.ar/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q=clima%20formosa&oq=clima&rlz=1C1CHZL_esAR713AR713&aqs=chrome.1.69i57j0l5.2100j0j8")
         camara.cargar_comb()
+        Timer_Clima.Start()
 
     End Sub
 
@@ -27,9 +44,9 @@ Public Class Form_inicio
     Public Sub clase_finalizada()
         HORA_TIMER.Stop()
     End Sub
-    Private Sub Btn_detener_Click(sender As Object, e As EventArgs) Handles Btn_detener.Click
+    Private Sub Btn_detener_Click(sender As Object, e As EventArgs)
         'camara.desconectar()
-
+        ' oconeccion.Validar_presente(21, 10)
         'Form_Profesor.Show()
 
 
@@ -40,13 +57,8 @@ Public Class Form_inicio
         camara.desconectar()
     End Sub
     Private Sub HORA_TIMER_Tick(sender As System.Object, e As System.EventArgs) Handles HORA_TIMER.Tick
-        punto += 1
-        'temporizador del tiempo ingresado
-
-        oclase.TEMPORIZADOR()
-        lbl_hora.Text = oclase.Hora_
-        lbl_minuto.Text = oclase.Minuto_
-        Lbl_segundo.Text = oclase.Segundo_
+        'ACA VAMOS A LLAMAR A LA FUNCION TEMPORIZADOR
+        'TEMPORIZADOR()
         'el punto del reloj titile
         If punto = 2 Then
             Punto1.Visible = False
@@ -56,55 +68,64 @@ Public Class Form_inicio
             Punto1.Visible = True
             punto2.Visible = True
         End If
-    End Sub
-    Public Sub Mostrar_datos_Clase()
-        lbl_clase_Tema.Text = oclase.nombre_clase_  ' carga en el form1 el tema 
-
-        lbl_claseNoIniciada.Text = "" ' ocultar txt de clase no iniciada
-
-        lbl_nombre.Text = "Ingresar Asistencia" 'lbl bajo la camara que muestra el inicio de asistencia
-
-        oclase.ID_ = oconeccion.consultar_iD_clase ' obtener id de la clase
 
     End Sub
-    Public Sub codigo_obtenido(codigo1 As String)
-        'METODO CARGA LOS ATRIBUTOS PERSONAS  DE LA BD
-        opersona.caragar_datos(codigo1)
+    'Public Sub TEMPORIZADOR()
+    '    If hora = 0 And minuto = 0 And segundo = 0 Then
+    '        HORA_TIMER.Stop()
+    '        MsgBox("Clase FINALIZADA")
+    '        'estado_clase = 0 'clase terminada
+    '    Else
+    '        If Not segundo = 0 Then
+    '            segundo -= 1
+    '        Else
+    '            If Not minuto = 0 Then
+    '                minuto -= 1
+    '                segundo = 59
+    '            Else
+    '                hora -= 1
+    '                minuto = 59
+    '                segundo = 59
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
 
-        'VALIDACION PERSONA
-        If opersona.TipoDePersona = 3 Then 'NO ESTA EN LA BD =3
-            lbl_nombre.Text = "NO SE ENCUENTRA EN LA BASE DE DATOS"
-            Pic_perfil = Nothing
 
-        ElseIf opersona.TipoDePersona = 1 Then 'alumno=1
+    Protected Overrides Sub Finalize()
+        MyBase.Finalize()
+    End Sub
 
-            If oclase.Estado_Clase_ = 0 Then
-                MsgBox("Clase no iniciada")
-                Exit Sub 'valida si la clase esta iniciada
-            End If
-           
 
-            lbl_nombre.Text = "BIENVENIDO ALUMNO: " + opersona.ApellidoyNombre
-            'ingresa la foto del alumno
-            If opersona.FOTO_ = "1" Then
-                Pic_perfil.Image = Image.FromFile("C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\usuario.jpg")
-            Else
-                Pic_perfil.ImageLocation = (opersona.FOTO_)
-            End If
+    Private Sub actualizar_clima()
+        Try
+            LabelCiudad.Text = WebBrowserClima.Document.GetElementById("wob_loc").InnerText
+            LabelTemp.Text = WebBrowserClima.Document.GetElementById("wob_tm").InnerText
+            LabelClima.Text = WebBrowserClima.Document.GetElementById("wob_dc").InnerText
+            LabelPrecip.Text = "Precipitaciones: " & WebBrowserClima.Document.GetElementById("wob_pp").InnerText
+            LabelHumedad.Text = "Humedad: " & WebBrowserClima.Document.GetElementById("wob_hm").InnerText
+            LabelViento.Text = "Viento: " & WebBrowserClima.Document.GetElementById("wob_ws").InnerText
+            LabelDia.Text = WebBrowserClima.Document.GetElementById("wob_dts").InnerText
+            PBClima.ImageLocation = WebBrowserClima.Document.GetElementById("wob_tci").GetAttribute("src")
+        Catch ex As Exception
+        End Try
 
-            opersona.insertar_PRESENTE() ' inserta presente a alumno
 
-            'llamar metodo que de de alta a la persona en la tabla asistencia 
+    End Sub
 
-        ElseIf opersona.TipoDePersona = 2 Then 'PROFESOR_________________________________________
-            If oclase.Estado_Clase_ = 1 Then
-                MsgBox("Clase se encuentra Iniciada")
-                Exit Sub 'valida si la clase esta iniciada
-            End If
-            Form_Profesor.Show()
+    Private Sub Timer_Clima_Tick(sender As Object, e As EventArgs) Handles Timer_Clima.Tick
+        actualizar_clima()
+        Timer_Clima.Stop()
 
+    End Sub
+
+    Private Sub Timer_nombre_desaparece_Tick(sender As Object, e As EventArgs) Handles Timer_nombre_desaparece.Tick
+        CONT_TIMER += 1
+        If CONT_TIMER = 2 Then
+            Pic_perfil.Image = Image.FromFile("C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\profile.jpg")
+            lbl_nombre.Text = "Ingresa Tu Codigo de Asistencia"
+            Timer_nombre_desaparece.Stop()
+            CONT_TIMER = 0
         End If
-
     End Sub
-
 End Class

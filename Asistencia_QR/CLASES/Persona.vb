@@ -1,5 +1,6 @@
 ﻿Imports Oracle.DataAccess.Client
-'
+
+
 Public Enum tipo_de_persona As Byte
     NO_EXISTE = 3
     alumno = 1
@@ -7,18 +8,41 @@ Public Enum tipo_de_persona As Byte
 End Enum
 
 Public Class Persona
-
+    Inherits Clase
     'ATRIBUTOS
-    Private Apellido_y_Nombre As String
-    Private DNI_ As Long
-    Private TipoPersona As tipo_de_persona
-    Private ID As Long
-    Private foto As String
-    Private oconeccion As New coneccion
+    Friend Apellido_y_Nombre As String
+    Friend DNI_ As Long
+    Friend ID As Long
+    Friend foto As String
+    Friend oconeccion As New coneccion
 
     'constructor
-    Public Sub New()
-        '    Me.hora_ = TimeOfDay
+    Sub New()
+
+    End Sub
+    Public Sub New(ByVal Codigo As String)
+        ' validar persona mediante los metodos heredados de conexion
+        Dim Tipo_Persona As tipo_de_persona = oconeccion.consultar_Tpo_Persona(Codigo)
+
+        If Tipo_Persona = tipo_de_persona.NO_EXISTE Then
+
+            Form_inicio.lbl_nombre.Text = "NO SE ENCUENTRA EN LA BASE DE DATOS"
+            Form_inicio.Pic_perfil.Image = Image.FromFile("C:\Users\gasss\Desktop\Proyecto Asistencia\Asistencia_QR\profile.jpg")
+
+        ElseIf Tipo_Persona = tipo_de_persona.alumno Then
+            If Estado_Clase_ = estado_de_la_clase.no_iniciado Then
+               
+                Dim oalumno As New alumno(Codigo)
+            End If
+        End If
+        If Tipo_Persona = tipo_de_persona.profesor Then
+            If Estado_Clase_ = estado_de_la_clase.iniciado Then
+                Form_inicio.lbl_nombre.Text = "Clase se encuentra iniciada"
+                Exit Sub
+            End If
+            Form_Profesor.Show()
+        End If
+
     End Sub
 
     'PROPIEDADES DE ACCESO A LOS ATRIBUTOS
@@ -41,47 +65,14 @@ Public Class Persona
         End Get
 
     End Property
-    Friend ReadOnly Property TipoDePersona() As tipo_de_persona
-        Get
-            Return Me.TipoPersona
-        End Get
 
-    End Property
     Friend ReadOnly Property id_() As Long
         Get
             Return Me.ID
         End Get
     End Property
-    Friend Sub caragar_datos(ByVal codigo As String)
-        Dim fila As DataRow
-        'consultar tipo de persona
-        Me.TipoPersona = CInt(oconeccion.consultar_Tpo_Persona(codigo))
-        If Me.TipoPersona = 3 Then Exit Sub
-        'cargar atributos
-        Try
-            fila = oconeccion.consultar_datos(codigo).Rows(0)
-
-            Me.Apellido_y_Nombre = fila.ItemArray(2)
-            Me.DNI_ = fila.ItemArray(3)
-            Me.ID = fila.ItemArray(0)
-            If fila.ItemArray(7) = "" Then
-            Else
-                Me.foto = fila.ItemArray(7)
-            End If
 
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-    Public Sub insertar_PRESENTE()
 
-        Dim fecha_y_hora As Date = String.Format("{0:G}", DateTime.Now)
 
-        oconeccion.Insertar_Asistencia(fecha_y_hora, Form_inicio.oclase.ID_, ID)
-    End Sub
-    Public Sub INSERTAR_NUEVA_CLASE()
-        Dim fecha_y_hora As Date = String.Format("{0:G}", DateTime.Now)
-        oconeccion.Insertar_clase(fecha_y_hora, Form_inicio.oclase.nombre_clase_, Form_inicio.oclase.ID_COMISION, Form_inicio.oclase.ID_Materia_)
-    End Sub
 End Class
