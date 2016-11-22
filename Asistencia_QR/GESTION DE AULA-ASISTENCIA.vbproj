@@ -135,7 +135,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLASES\Asistencia.vb" />
     <Compile Include="CLASES\Clase1.vb" />
     <Compile Include="CLASES\Alumno.vb" />
     <Compile Include="CLASES\CONECCION.vb" />
